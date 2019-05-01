@@ -11,9 +11,10 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "node src/App.js",
-    "dev": "nodemon app"
-  
+    "start": "node src/server.js",
+    "dev": "nodemon server",
+    "test": "mocha src/App.test.js"
+
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +32,9 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }

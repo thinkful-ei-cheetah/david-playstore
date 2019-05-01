@@ -21,16 +21,17 @@ app.get('/apps', (req, res) => {
         .send('sort must be one of rating or app');
     }
   }
-  else if (sort === 'app') {
-    results = results.sort((a, b) => {
-      const x = a.app.toLowerCase();
-      const y = b.app.toLowerCase();
-      return x[sort] > y[sort] ? -1 : x[sort] < y[sort] ? 1 : 0;
-    })
+  if (sort === 'app') {
+    results = store.sort((a, b) => {
+      let x = a['App'].toLowerCase();
+      let y = b['App'].toLowerCase();
+
+      return x > y ? 1 : x < y ? -1 : 0;
+    });
   }
   else if (sort === 'rating') {
     results = results.sort((a, b) => {
-      return a['rating'] < b['rating'] ? 1 : a['rating'] > b['rating'] ? -1 : 0;
+      return a['Rating'] < b['Rating'] ? 1 : a['Rating'] > b['Rating'] ? -1 : 0;
     })
   }
 
@@ -47,7 +48,5 @@ app.get('/apps', (req, res) => {
   return res.send(results);
 
 });
-  app.listen(8000, () => {
-  console.log('server started on port 8000');
-});
+module.exports = app;;
 
